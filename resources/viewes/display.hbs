@@ -1,0 +1,43 @@
+{{>header}}
+    {{>navigation}}
+    <section class="content_all_task my-3">
+        <div class="container">
+            {{#if checkFound}}
+            <div class="rwo my-2 d-flex justify-content-between">
+                <div class="col my-1 px-1">
+                    <h5 class="">All tasks todo list</h5>
+                </div>
+                <div class="col my-1 px-1">
+                    <h5 class="text-end"><a href="/addTask" class="alert-link">Add new task</a></h5>
+                </div>
+            </div>
+            
+            <div class="row my-2 py-2">
+                {{#each todoList}}
+                <div class="col-lg-4">
+                    <div class="card text-white bg-dark mb-3" style="">
+                        <div class="card-header">ToDo</div>
+                        <div class="card-body">
+                            <h5 class="card-title">{{this.title}}</h5>
+                            <p class="card-text">{{this.content}}</p>
+                        </div>
+                        <div class="actions_btns card-body">
+                            <a href="/singleTask/{{this.id}}"class="btn btn-success" >Show</a>
+                            <a href="/delTask/{{this.id}}" class="btn btn-danger">Delete</a>
+                            <a href="/editTask/{{this.id}}" class="btn btn-info">Edit</a>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+            {{else}}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Not founded !</strong> Can't show any data <a href="/addTask" class="alert-link">Click to add data</a>.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {{/if}}
+        </div>
+    </section>
+
+    
+{{>footer}}
